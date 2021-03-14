@@ -11,32 +11,11 @@
                     <th>Amount</th>
                     <th>Date</th>
                 </tr>
-                <tr>
-                    <td>Euro</td>
-                    <td>1800</td>
-                    <td>12.03.2020</td>
+                <tr v-for="transaction in transactions" :key="transaction">
+                    <td>{{transaction.currency}}</td>
+                    <td>{{transaction.amount}}</td>
+                    <td>{{transaction.date}}</td>
                 </tr>
-                <tr>
-                    <td>Dollar</td>
-                    <td>2000</td>
-                    <td>22.08.2018</td>
-                </tr>
-                <tr>
-                    <td>BGN</td>
-                    <td>600</td>
-                    <td>17.04.2021</td>
-                </tr>
-                <tr>
-                    <td>Gold</td>
-                    <td>3kg</td>
-                    <td>05.01.2020</td>
-                </tr>
-                <tr>
-                    <td>Bitcoin</td>
-                    <td>0.007</td>
-                    <td>30.06.2021</td>
-                </tr>
-            
             </table>
         </div>
         <div slot="tab" class="tab-container">
@@ -68,6 +47,73 @@ export default {
         return {
             info: '51231527712',
             tabItems: ['About', 'Settings', 'Notifications'],
+            transactions: [
+                {
+                    currency: 'Euro',
+                    amount: '1800',
+                    date: '15.02.2020',
+                },
+                {
+                    currency: 'Euro',
+                    amount: '1200',
+                    date: '16.02.2020',
+                },
+                {
+                    currency: 'BGN',
+                    amount: '330',
+                    date: '17.02.2020',
+                },
+                {
+                    currency: 'Bitcoin',
+                    amount: '0.003',
+                    date: '18.02.2020',
+                },
+                {
+                    currency: 'Bitcoin',
+                    amount: '0.0001',
+                    date: '19.02.2020',
+                },
+                {
+                    currency: 'Bitcoin',
+                    amount: '0.002',
+                    date: '20.02.2020',
+                },
+                {
+                    currency: 'Dollar',
+                    amount: '123',
+                    date: '21.02.2020',
+                },
+                {
+                    currency: 'Dollar',
+                    amount: '150',
+                    date: '22.02.2020',
+                },
+                {
+                    currency: 'Dollar',
+                    amount: '450',
+                    date: '23.02.2020',
+                },
+                {
+                    currency: 'Dollar',
+                    amount: '150',
+                    date: '22.02.2020',
+                },
+                {
+                    currency: 'Dollar',
+                    amount: '450',
+                    date: '23.02.2020',
+                },
+                   {
+                    currency: 'Dollar',
+                    amount: '150',
+                    date: '22.02.2020',
+                },
+                {
+                    currency: 'Dollar',
+                    amount: '450',
+                    date: '23.02.2020',
+                },
+            ]
         }
     },
     methods: {
@@ -76,13 +122,12 @@ export default {
         },
         stateChanged() {
             this.$emit('stateChangedTwo')
-            console.log('hallelujah')
         }
     }
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
     .info {
         margin-right: 1rem;
     }
@@ -145,5 +190,8 @@ export default {
     .wrapper {
         display: flex;
         flex-direction: column;
+    }
+    label {
+        color: white;
     }
 </style>

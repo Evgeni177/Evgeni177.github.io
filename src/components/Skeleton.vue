@@ -1,7 +1,10 @@
 <template>
     <div id="app">
         <div v-if="taskOne" class="main-container">
-            <div class="sidebar"> Sidebar </div>
+            <div class="sidebar">
+                <h3 class="sidebar-header">Sidebar</h3>
+                <div class="sidebar-item" v-for="item in sidebarItems" :key="item">{{ item }}</div>
+            </div>
             <div class="main">
                 <div class="heading">
                     <slot name="customerDetails"/>
@@ -52,6 +55,7 @@ export default {
         return {
             taskOne: true,
             taskTwo: false,
+            sidebarItems: ['Home', 'Dashboard', 'Team', 'Projects', 'Calendar', 'Documents', 'Reports']
         }
     },
     computed: {
@@ -98,29 +102,29 @@ export default {
         margin: 0;
         display: flex;
         align-items: center;
-        background: rgb(252, 238, 222);
+        background: url('https://www.wallpapertip.com/wmimgs/3-36152_gaussian-blurred.jpg');
     }
     .main-container {
         height: 95%;
         width: 100%;
-        background: rgb(230, 230, 230);
+        background: url('https://www.wallpapertip.com/wmimgs/3-36152_gaussian-blurred.jpg');
+
+        background-repeat: no-repeat;
+        background-size:cover;
         display: flex;
         padding: 10px;
     }
     .sidebar {
-        border: 1px solid black;
         flex: 1;
         margin: .1rem;
     }
     .main {
         display: flex;
         flex-direction: column;
-        border: 1px solid black;
         flex: 3;
         margin: .1rem;
     }
     .main > div {
-        border: 1px solid black;
         padding: .5rem;
         margin: .3rem;
     }
@@ -134,7 +138,6 @@ export default {
         flex: 10;
     }
     .center > div {
-        border: 1px solid black;
         padding: .5rem;
         margin: .2rem;
     }
@@ -167,5 +170,18 @@ export default {
     .task-two {
         margin-left: 1rem;
     }
-    /* ------ */
+    .sidebar-header {
+        padding: 1rem;
+    }
+    .sidebar {
+        background: transparent
+    }
+    .sidebar-item {
+        color: white;
+        padding: 1rem;
+        background:  transparent
+    }
+    .sidebar-item:hover {
+        background: rgba(47, 59, 68, 0.5);
+    }
 </style>

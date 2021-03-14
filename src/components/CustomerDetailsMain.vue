@@ -4,7 +4,7 @@
             <h2>{{ name }}</h2>
         </div>
         <div slot="todo" class="container-todo">
-            <h2>Todo List</h2>
+            <h2 class="todo-list">Todo List</h2>
             <input class="input-todo" type="text">
             <div v-for="item in items" :key="item" class="todo-item">
                 <p class="todo-item-inner">{{ item }}</p>
@@ -42,16 +42,16 @@ export default {
                     'https://travelgeekmag.com/wp-content/uploads/2019/07/Vacation-Rental-House.jpg',
                 ],
                 [
-                     'https://media.architecturaldigest.com/photos/576d98405ea3e586576ec499/master/w_1192,h_756,c_limit/luxury-vacation-rental-sites-02.png',
-                    'https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/08/s-4-these-are-the-best-places-to-buy-a-vacation-home-and-theyand8217re-not-what-you-might-guess.jpg',
+                    'https://www.unicef.org.uk/babyfriendly/wp-content/uploads/sites/2/2018/03/2000x1000-Conference-2016-1500x750.jpg',
+                    'https://images.unsplash.com/photo-1561489396-888724a1543d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbmZlcmVuY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
                     'https://d1s0jlrqciuqf0.cloudfront.net/home_banner/vacation_rentals_by_owner.jpg',
                     'https://images.ctfassets.net/gxwgulxyxxy1/1KmT39WWv6q55IvSQJUbmU/be38082bf3e9c477af3d6cf43e77df53/colorado-1676468.jpg?fm=jpg&w=1200',
                 ],
                 [
-                    'https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/08/s-4-these-are-the-best-places-to-buy-a-vacation-home-and-theyand8217re-not-what-you-might-guess.jpg',
-                    'https://i1.wp.com/www.smartertravel.com/wp-content/uploads/2020/02/beachfront-home-rental.jpg?fit=1920%2C1080&ssl=1',
-                    'https://travelgeekmag.com/wp-content/uploads/2019/07/Vacation-Rental-House.jpg',
-                    'https://d1s0jlrqciuqf0.cloudfront.net/home_banner/vacation_rentals_by_owner.jpg',
+                    'https://compass-ssl.microsoft.com/assets/f9/4c/f94c2916-6a4e-4cbc-9bc1-9f0e0f4ee46c.png?n=ioc_home_bottomleft_4up_491x276.png',
+                    'https://images.squarespace-cdn.com/content/v1/55115f04e4b0f4baa9ed963c/1533128058788-55KV6J0U3OPDX9GSHI32/ke17ZwdGBToddI8pDm48kKAE7eE7Z79jD9GUT7RpkzQUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dljhX9a4mUXN9JQETW2Rey0peZj9al7WjcTnKtM34ebPP7cJNZlDXbgJNE9ef52e8w/conference+image+resize.jpg?format=1500w',
+                    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uZmVyZW5jZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+                    'https://windeurope.org/summit2018/wp-content/uploads/gws-summit-2018-banner-plenary.jpg',
                 ]
             ],
             contactInformation: '0884718678 evgeni.kunchev1998@gmail.com'
@@ -60,7 +60,6 @@ export default {
     methods: {
         stateChanged() {
             this.$emit('stateChangedTwo');
-            console.log(3333);
         }
     }
 }
@@ -70,7 +69,7 @@ export default {
     .container-todo {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        padding: 0rem 1rem;
     }
     .todo-item-inner {
         margin: 0;
@@ -104,5 +103,8 @@ export default {
         display: flex;
         justify-content: space-around;
         margin-bottom: 1rem;
+    }
+    .todo-list {
+        margin-top: 0;
     }
 </style>

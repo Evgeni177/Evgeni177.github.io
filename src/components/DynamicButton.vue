@@ -55,7 +55,7 @@ export default {
     .button {
         background: rgb(175, 175, 175);
         overflow: hidden;
-        padding: .2rem;
+        padding: .4rem;
         display: flex;
         align-items: center;
         justify-content: center;
