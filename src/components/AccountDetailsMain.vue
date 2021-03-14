@@ -1,5 +1,5 @@
 <template>
-    <app @stateChanged="stateChanged">
+    <skeleton @stateChanged="stateChanged">
         <div slot="legalInformation" class="legal-information-container">
             <h2 class="info">{{ info }}</h2>
             <img class="image-avatar" src="https://cdn.now.howstuffworks.com/media-content/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg" alt="">
@@ -54,15 +54,15 @@
                 <input class="support-input" type="text" name="problem">
             </div>
         </div>   
-    </app>  
+    </skeleton>  
 </template>
 
 <script>
-import App from './../App';
+import Skeleton from './Skeleton';
 export default {
     name: 'AccountDetails',
     components: {
-        App
+        Skeleton
     },
     data() {
         return {

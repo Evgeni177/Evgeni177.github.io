@@ -1,5 +1,5 @@
 <template>
-    <app @stateChanged="stateChanged">
+    <skeleton @stateChanged="stateChanged">
         <div slot="customerDetails">
             <h2>{{ name }}</h2>
         </div>
@@ -20,15 +20,15 @@
         <div slot="contactDetails" class="contact-details-container">
             <h2>{{ contactInformation }}</h2>
         </div>   
-    </app>
+    </skeleton>
 </template>
 
 <script>
-import App from './../App';
+import Skeleton from './Skeleton.vue';
 export default {
     name: 'CustomerDetailsMain',
     components: {
-        App
+        Skeleton
     },
     data() {
         return {

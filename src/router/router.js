@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import TaskTwo from './../TaskTwo';
-import Main from './../components/Main';
+import App from './../App';
 Vue.use(Router)
 
 const routes = [
@@ -11,9 +11,9 @@ const routes = [
         component: TaskTwo
     },
     {
-        name: 'Main',
+        name: 'App',
         path: '/',
-        component: Main
+        component: App
     }
 ]
 
