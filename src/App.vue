@@ -11,12 +11,12 @@
                     <div class="right-header">
                         <dynamic-button large
                                         class="account-details"
-                                        :text="getText" 
-                                        @dynamicButtonClicked="buttonClicked()"/>
+                                        :text="getText"
+                                        @dynamicButtonClicked="buttonClicked"/>
                         <dynamic-button small 
                                         class="task-two"
-                                        text="Task 2" 
-                                        @dynamicButtonClicked="gotoTaskTwo()"/>
+                                        text="Task 2"
+                                        @dynamicButtonClicked="gotoTaskTwo"/>
                     </div>
                 </div>
                 <div class="center">
@@ -83,7 +83,7 @@ export default {
             if(this.state == 1) {
                 return "Evgeni Kunchev";
             } else {
-                return "1213131213123 Avatar"
+                return "533412213"
             }
         },
         getContactInformation() {
@@ -98,21 +98,27 @@ export default {
         }
     },
     methods: {
-        buttonClicked() {
-            if(this.state == 1) {
-                this.state = 2;
-            } else {
-                this.state = 1;
+        buttonClicked(disabled) {
+            if(!disabled) {
+                if(this.state == 1) {
+                    this.state = 2;
+                } else {
+                    this.state = 1;
+                }
             }
         },
-        gotoTaskTwo() {
-            this.taskOne = false;
-            this.taskTwo = true;
-            this.$router.push('/taskTwo')
+        gotoTaskTwo(disabled) {
+            if(!disabled) {
+                this.taskOne = false;
+                this.taskTwo = true;
+                this.$router.push('/taskTwo')
+            }
         },
-        gotoTaskOne() {
-            this.taskOne = true;
-            this.taskTwo = false;
+        gotoTaskOne(disabled) {
+            if(!disabled) {
+                this.taskOne = true;
+                this.taskTwo = false;
+            }
         },
         dynamicButtonClicked() {
             console.log('Dynamic button clicked')

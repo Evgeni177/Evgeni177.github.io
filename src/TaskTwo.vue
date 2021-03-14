@@ -3,8 +3,8 @@
             <div class="inner">
                 <dynamic-button medium
                                 class="back-button"
-                                text="Back" 
-                                @dynamicButtonClicked="goBack()"/>
+                                text="Back"
+                                @dynamicButtonClicked="goBack"/>
                 <h2 class="dynamic-form">Dynamic Form</h2>
                 <label for="">Already sent</label>
                 <input type="radio" value="already_sent" v-model="picked">
@@ -170,8 +170,10 @@ export default {
         afterComplete(file) {
             this.files.push(file.name)
         },
-        goBack() {
-            this.$router.replace('/');
+        goBack(disabled) {
+            if(!disabled) {
+                this.$router.replace('/');
+            }
         },
         checkInput() {
             if(this.passportNumber == '321') {

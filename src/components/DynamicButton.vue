@@ -15,25 +15,34 @@ export default {
         text: String,
         small: Boolean,
         medium: Boolean,
-        large: Boolean
+        large: Boolean,
+        disabled: Boolean
     },
     computed: {
+        setStyleDisabled() {
+            return 'disabled'
+
+        },
         setStyle() {
+            let style = '';
             if(this.small) {
-                return 'small';
+                style = 'small';
             }
             if(this.medium) {
-                return 'medium';
+                style = 'medium';
             }
             if(this.large) {
-                return 'large';
+                style = 'large';
             }
-            return '';
+            if(this.disabled) {
+                style += ' disabled';
+            }
+            return  style;
         }        
     },
     methods: {
         dynamicButtonClicked() {
-            this.$emit('dynamicButtonClicked');
+            this.$emit('dynamicButtonClicked', this.disabled);
         }
     }
 }
@@ -71,5 +80,12 @@ export default {
         height: 20pt;
         width: 80pt;
         font-size: 10pt;
+    }
+    .disabled {
+        cursor: no-drop;
+    }
+    .disabled:hover {
+        background: rgb(175, 175, 175);
+        color: black;
     }
 </style>
