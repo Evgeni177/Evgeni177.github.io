@@ -45,6 +45,7 @@
                         <p v-if="notSentYetErrors.passport" class="error"> {{ notSentYetErrors.passport }} </p>
                         <input class="input" 
                                 type="text" 
+                                :style="setPassportErrorStyle"
                                 v-model="passportNumber" 
                                 @input="checkInput()">
                         <div v-if="showDropdown" class="dropdown-container">
@@ -63,7 +64,7 @@
                         <div v-if="status == 'urgent'" class="urgent">
                             <label for="">Deadline</label>
                             <p v-if="notSentYetErrors.deadline" class="error"> {{ notSentYetErrors.deadline }} </p>
-                            <datepicker :style="setDateErrorStyle" 
+                            <datepicker :style="setDeadlineErrorStyle" 
                                         input-class="date-input" 
                                         class="date-picker-main" 
                                         v-model="dateDeadline"/>
@@ -131,6 +132,20 @@ export default {
                 return '';
             }
         },
+        setPassportErrorStyle() {
+            if(this.notSentYetErrors.passport) {
+                return 'border: 1px solid red';
+            } else {
+                return '';
+            }
+        },
+        setDeadlineErrorStyle() {
+            if(this.notSentYetErrors.deadline) {
+                return 'border: 1px solid red';
+            } else {
+                return '';
+            }
+        }
     },
     mounted() {
         window.addEventListener('click', () => {

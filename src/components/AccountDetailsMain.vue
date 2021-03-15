@@ -11,7 +11,7 @@
                     <th>Amount</th>
                     <th>Date</th>
                 </tr>
-                <tr v-for="transaction in transactions" :key="transaction">
+                <tr v-for="(transaction, index) in transactions" :key="index">
                     <td>{{transaction.currency}}</td>
                     <td>{{transaction.amount}}</td>
                     <td>{{transaction.date}}</td>
@@ -19,8 +19,19 @@
             </table>
         </div>
         <div slot="tab" class="tab-container">
-            <div class="tab" v-for="text in tabItems" :key="text" @click="tabClicked">
-                {{ text }}
+            <div class=tabs-main>
+                <div class="tab" :class="isSelectedTab(index)" v-for="(text, index) in tabItems" :key="text" @click="tabClicked(index)">
+                    <p>{{text}}</p>
+                </div>
+            </div>
+            <div v-if="selectedTab == 0">
+                <p class="par-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laboru </p>
+            </div>
+            <div v-if="selectedTab == 1">
+            <p class="par-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</p>
+            </div>
+            <div v-if="selectedTab == 2">
+                <p class="par-text">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</p>
             </div>
         </div>
         <div slot="support" class="support-container">
@@ -47,6 +58,7 @@ export default {
         return {
             info: '51231527712',
             tabItems: ['About', 'Settings', 'Notifications'],
+            selectedTab: 0,
             transactions: [
                 {
                     currency: 'Euro',
@@ -117,17 +129,27 @@ export default {
         }
     },
     methods: {
-        tabClicked() {
-            console.log('clicked')
+        tabClicked(index) {
+            this.selectedTab = index;
+            this.$emit('tabClicked', this.selectedTab);
         },
         stateChanged() {
             this.$emit('stateChangedTwo')
+        },
+        isSelectedTab(index) {
+            if(this.selectedTab == index) {
+                return 'selected'
+            }
+            return '';
         }
     }
 }
 </script>
 
 <style lang="css" scoped>
+    .selected {
+        background: white;
+    }
     .info {
         margin-right: 1rem;
     }
@@ -154,13 +176,14 @@ export default {
     tr:nth-child(even) {
         background-color: #dddddd;
     }
-    .tab-container {
-        cursor: pointer;
+    .tabs-main {
+         cursor: pointer;
         height: 100%;
         width: 100%;
         align-self: flex-start;
         display: flex;
         justify-content: space-around;
+        height: 2rem;
     }
     .tab {
         text-align: center;
@@ -168,6 +191,9 @@ export default {
         transition: color,background-color 0.5s linear;
         border-radius: 8px;
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .tab:hover {
         color: grey;
@@ -193,5 +219,8 @@ export default {
     }
     label {
         color: white;
+    }
+    .par-text {
+        font-size: 1.3rem;
     }
 </style>

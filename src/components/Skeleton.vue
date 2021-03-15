@@ -27,9 +27,7 @@
                     </div>
                     <div class="right"> 
                         <slot name="suggestions"/>
-                        <div class="tabs-container">
-                            <slot name="tab"/>
-                        </div>
+                        <slot name="tab"/>
                     </div>
                 </div>
                 <div class="footer"> 
@@ -55,7 +53,8 @@ export default {
         return {
             taskOne: true,
             taskTwo: false,
-            sidebarItems: ['Home', 'Dashboard', 'Team', 'Projects', 'Calendar', 'Documents', 'Reports']
+            sidebarItems: ['Home', 'Dashboard', 'Team', 'Projects', 'Calendar', 'Documents', 'Reports'],
+            selectedTab: 0
         }
     },
     computed: {
@@ -142,6 +141,8 @@ export default {
         margin: .2rem;
     }
     .left {
+        height: 40rem;
+        overflow: hidden;
         flex: 3;
     }
     .right {
@@ -174,7 +175,8 @@ export default {
         padding: 1rem;
     }
     .sidebar {
-        background: transparent
+        background: transparent;
+        cursor: pointer;
     }
     .sidebar-item {
         color: white;

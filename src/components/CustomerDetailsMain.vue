@@ -5,7 +5,12 @@
         </div>
         <div slot="todo" class="container-todo">
             <h2 class="todo-list">Todo List</h2>
-            <input class="input-todo" type="text">
+            <div class="input-container">
+                <input placeholder="Put an item here" class="input-todo" v-model="todoText" type="text">
+                <div @click="addItem" class="add-item">
+                    <div>Add</div>
+                </div>
+            </div>
             <div v-for="item in items" :key="item" class="todo-item">
                 <p class="todo-item-inner">{{ item }}</p>
             </div>
@@ -54,13 +59,20 @@ export default {
                     'https://windeurope.org/summit2018/wp-content/uploads/gws-summit-2018-banner-plenary.jpg',
                 ]
             ],
-            contactInformation: '0884718678 evgeni.kunchev1998@gmail.com'
+            contactInformation: '0884718678 evgeni.kunchev1998@gmail.com',
+            todoText: ''
         }
     },
     methods: {
         stateChanged() {
             this.$emit('stateChangedTwo');
-        }
+        },
+        addItem() {
+            if(this.todoText) {
+                this.items.push(this.todoText)
+                this.todoText = '';
+            }
+        },
     }
 }
 </script>
@@ -70,6 +82,12 @@ export default {
         display: flex;
         flex-direction: column;
         padding: 0rem 1rem;
+        height: inherit;
+        overflow-x: auto;
+    }
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
     }
     .todo-item-inner {
         margin: 0;
@@ -83,6 +101,7 @@ export default {
         border: 0;
         font-size: 1rem;
         margin-bottom: 1rem;
+        flex: 6;
     }
     .todo-item {
         padding: .7rem;
@@ -106,5 +125,22 @@ export default {
     }
     .todo-list {
         margin-top: 0;
+    }
+    .input-container {
+        display: flex;
+    }
+    .add-item {
+        flex: 1;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(130, 130, 170);
+        margin-left: .2rem;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .add-item:hover {
+        background: rgba(130, 130, 170, .8);
     }
 </style>
