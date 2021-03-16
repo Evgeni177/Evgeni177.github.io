@@ -11,7 +11,7 @@
                     <div>Add</div>
                 </div>
             </div>
-            <div v-for="item in items" :key="item" class="todo-item">
+            <div v-for="(item, index) in items" :key="index" class="todo-item">
                 <p class="todo-item-inner">{{ item }}</p>
             </div>
         </div>
